@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Sakklepesek_JakabLaszlo11B
 {
     /// <summary>
@@ -22,8 +23,9 @@ namespace Sakklepesek_JakabLaszlo11B
     /// </summary>
     public partial class MainWindow : Window
     {
-        Rectangle[,] tablaMezoi;
-        Grid tabla;
+        int tablaMerete = 8;
+        Button[,] mezok;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,59 +36,48 @@ namespace Sakklepesek_JakabLaszlo11B
 
         private void FeluletGeneralas()
         {
-            tablaMezoi = new Rectangle[10, 10];
-            char betuJel = 'A';
-            for (int i = 1; i < 9; i++)
+            tabla.RowDefinitions.Clear();
+            tabla.ColumnDefinitions.Clear();
+            for (int i = 0; i < tablaMerete; i++)
             {
-                Label betu = new Label();
-                betu.HorizontalAlignment = HorizontalAlignment.Center;
-                betu.VerticalAlignment = VerticalAlignment.Bottom;
-                betu.Content = betuJel++;
-                tabla.Children.Add(betu);
-                Grid.SetRow(betu, 0);
-                Grid.SetColumn(betu, i);
-
-                betu = new Label();
-                betu.HorizontalAlignment = HorizontalAlignment.Right;
-                betu.VerticalAlignment = VerticalAlignment.Center;
-                betu.Content = betuJel++;
-                tabla.Children.Add(betu);
-                Grid.SetRow(betu, 9);
-                Grid.SetColumn(betu, i);
-
-                betu = new Label();
-                betu.HorizontalAlignment = HorizontalAlignment.Right;
-                betu.VerticalAlignment = VerticalAlignment.Center;
-                betu.Content = 9 - i;
-                tabla.Children.Add(betu);
-                Grid.SetRow(betu, i);
-                Grid.SetColumn(betu, 9);
-
-                betu = new Label();
-                betu.HorizontalAlignment = HorizontalAlignment.Left;
-                betu.VerticalAlignment = VerticalAlignment.Center;
-                betu.Content = 9 - i;
-                tabla.Children.Add(betu);
-                Grid.SetRow(betu, i);
-                Grid.SetColumn(betu, 9);
+                tabla.RowDefinitions.Add(new RowDefinition());
+                tabla.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            for (int i = 0; i < 8; i++)
+            
+            tabla.Children.Clear();
+            mezok = new Button[tablaMerete, tablaMerete];
+            for (int i = 0; i < tablaMerete; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < tablaMerete; j++)
                 {
-                    tablaMezoi[i, j] = new Rectangle();
-                    tablaMezoi[i, j].Stroke = Brushes.Black;
-                    tablaMezoi[i, j].Fill = (i + j) % 2 == 0 ? Brushes.White : Brushes.Black;
+                    mezok[i, j] = new Button();
+                    tabla.Children.Add(mezok[i, j]);
                     
-                    tabla.Children.Add(tablaMezoi[i, j]);
-                    Grid.SetColumn(tablaMezoi[i, j], j);
-                    Grid.SetRow(tablaMezoi[i, j], i);
-
-
+                    Grid.SetRow(mezok[i, j], i);
+                    Grid.SetColumn(mezok[i, j], j);
                 }
             }
-        }
 
+            for (int i = 0; i < tablaMerete; i++)
+            {
+                for (int j = 0; j < tablaMerete; j++)
+                {
+                    if (j % 2 == 1 && i % 2 == 1)
+                    {
+                        mezok[i, j].Background = Brushes.White;
+                    }
+                    else if (j % 2 == 0 && i % 2 == 0)
+                    {
+                        mezok[i, j].Background = Brushes.White;
+                    }
+                    else
+                    {
+                        mezok[i, j].Background = Brushes.Black;
+                    }
+                }
+            }
+
+        }
         private void ComboBoxFeltoltes()
         {
             babukKivalasztasa.Items.Add("FehérParaszt");
