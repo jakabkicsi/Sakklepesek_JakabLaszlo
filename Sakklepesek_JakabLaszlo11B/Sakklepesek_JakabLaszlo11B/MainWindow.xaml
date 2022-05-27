@@ -14,6 +14,7 @@
         <ComboBox x:Name="babukKivalasztasa" HorizontalAlignment="Left" Margin="20,45,0,0" VerticalAlignment="Top" Width="109"/>
         <Label Content="Válaszd ki a bábut!" HorizontalAlignment="Left" Margin="20,15,0,0" VerticalAlignment="Top" Width="120"/>
         <Grid x:Name="tabla" Grid.Column="1" HorizontalAlignment="Left" Height="303" Margin="31,32,0,0" VerticalAlignment="Top" Width="326"/>
+        <Label x:Name="jelenlegiPozicio" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="79,403,0,0" VerticalAlignment="Top" Width="240"/>
 
     </Grid>
 
