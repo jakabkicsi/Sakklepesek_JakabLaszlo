@@ -23,6 +23,26 @@ namespace Sakklepesek_JakabLaszlo11B
         public MainWindow()
         {
             InitializeComponent();
+
+            ComboBoxFeltoltes();
+            FeluletGeneralas();
+        }
+
+        private void FeluletGeneralas()
+        {
+            
+        }
+
+        private void ComboBoxFeltoltes()
+        {
+            babukKivalasztasa.Items.Add("FehérParaszt");
+            babukKivalasztasa.Items.Add("FeketeParaszt");
+            babukKivalasztasa.Items.Add("bástya");
+            babukKivalasztasa.Items.Add("ló");
+            babukKivalasztasa.Items.Add("futó");
+            babukKivalasztasa.Items.Add("királynő");
+            babukKivalasztasa.Items.Add("király");
+            
         }
     }
 }
