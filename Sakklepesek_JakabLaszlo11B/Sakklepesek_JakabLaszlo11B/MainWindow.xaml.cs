@@ -26,7 +26,7 @@ namespace Sakklepesek_JakabLaszlo11B
         int tablaMerete = 8;
         Button[,] mezok;
         
-        string[] oszlopJelek = { "A", "B", "C", "D", "E", "F", "G", "H" };
+        
 
         public MainWindow()
         {
@@ -38,34 +38,6 @@ namespace Sakklepesek_JakabLaszlo11B
             
         }
 
-
-        private int[] Holvan(Button gomb)
-        {
-            int[] koordinatak = { -1, -1 };
-            for (int i = tablaMerete - 1; i >= 0; i--)
-            {
-                for (int j = tablaMerete - 1; j >= 0; j--)
-                {
-                    if (mezok[i, j].Equals(gomb))
-                    {
-                        i = 7 - i;
-                        koordinatak[0] = i;
-                        koordinatak[1] = j;
-                        return koordinatak;
-                    }
-                }
-            }
-            return koordinatak;
-        }
-
-        private void KoordinataValasztas(object sender, RoutedEventArgs e)
-        {
-            Button aktualis = sender as Button;
-            int x = Holvan(aktualis)[0];
-            int y = Holvan(aktualis)[1];
-            x = 8 - x;
-            jelenlegiPozicio.Content = oszlopJelek[y] + x.ToString();
-        }
 
         private void FeluletGeneralas()
         {
